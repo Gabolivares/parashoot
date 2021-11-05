@@ -25,13 +25,10 @@ const createGamePage = (dictionary) => {
   document.addEventListener("keydown", function (event) {
     console.log(event.keyCode);
     if (event.keyCode === 37) {
-      console.log("voy left");
       game.player.setDirection(-1);
     } else if (event.keyCode === 39) {
-      console.log("voy rigth");
       game.player.setDirection(1);
     } else if (event.keyCode === 38) {
-      console.log("disparar");
       game.player.shoot();
     }
   });
