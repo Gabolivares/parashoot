@@ -27,7 +27,7 @@ const createGamePage = (dictionary) => {
       game.player.setDirection(-1);
     } else if (event.keyCode === 39) {
       game.player.setDirection(1);
-    } else if (event.keyCode === 38) {
+    } else if (event.keyCode === 32) {
       game.player.shoot();
     }
   });

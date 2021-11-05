@@ -22,6 +22,7 @@ body{
 canvas{
     border: 2px solid white;
     margin-top: 40px;
+    background-color: rgb(197, 231, 243);
 
 }
 body {

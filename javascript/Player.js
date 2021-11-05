@@ -7,11 +7,13 @@ function Player(canvas) {
   this.y = this.canvas.height - 20;
   this.dx = 20;
   this.dy = 20;
-  this.lives = 3;
+  this.lives = 10;
   this.velocity = 7;
   this.direction = 0;
   this.color = "green";
   this.bullets = [];
+  this.img = new Image();
+  this.img.src = './assets/plane.png';
 }
 
 Player.prototype.move = function () {
@@ -22,16 +24,18 @@ Player.prototype.move = function () {
   if(this.x > this.canvas.width - 20){
     this.x =  0
 }
+
 };
 
 Player.prototype.draw = function () {
   this.ctx.fillStyle = this.color;
-  this.ctx.fillRect(this.x, this.y, this.dx, this.dy);
+  this.ctx.drawImage(this.img,this.x, this.y, this.dx, this.dy);
 };
 
 Player.prototype.setDirection = function (newDirection) {
   this.direction = newDirection;
 };
+
 
 Player.prototype.shoot = function () {
     var newBullet = new Bullet(this.canvas, this.x + 9);
