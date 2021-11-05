@@ -23,7 +23,6 @@ const createGamePage = (dictionary) => {
   var game = new Game(canvas);
   game.gameOberCallback((stats) => dictionary.toGameOver(dictionary, stats));
   document.addEventListener("keydown", function (event) {
-    console.log(event.keyCode);
     if (event.keyCode === 37) {
       game.player.setDirection(-1);
     } else if (event.keyCode === 39) {
