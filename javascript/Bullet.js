@@ -7,7 +7,7 @@ function Bullet(canvas, playerX) {
     this.y = this.canvas.height - 40;
     this.velocity =3;
     this.direction = -1;
-    this.color = 'blue';
+    this.color = 'red';
     this.dx = 2;
     this.dy = this.dx;
 }

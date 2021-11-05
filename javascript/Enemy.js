@@ -5,11 +5,13 @@ function Enemy(canvas, randomX) {
     this.ctx = this.canvas.getContext('2d');
     this.x = randomX ;
     this.y = 0;
-    this.velocity = Math.random()  + 0.5 ;
+    this.velocity = (Math.random() / 10)  + 0.2 ;
     this.direction = 1;
     this.color = 'red';
-    this.dx = 16;
+    this.dx = 20;
     this.dy = this.dx;
+    this.img = new Image();
+    this.img.src = './assets/parachute.png';
 }
 
 Enemy.prototype.move = function() {
@@ -18,5 +20,5 @@ Enemy.prototype.move = function() {
 
 Enemy.prototype.draw = function() {
     this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x, this.y, this.dx, this.dy);
+    this.ctx.drawImage(this.img, this.x, this.y, this.dx, this.dy);
 }

@@ -9,6 +9,8 @@ function Game(canvas) {
   this.onGameOver = null;
   this.level = 0;
   this.kills = 0;
+  this.clouds = [];
+  
 }
 
 Game.prototype.startGame = function () {
@@ -21,6 +23,12 @@ Game.prototype.startGame = function () {
       var newEnemy = new Enemy(this.canvas, randomX);
       this.enemies.push(newEnemy);
     }
+    if (Math.random() > 0.997 - this.level / 700) {
+      var randomX = Math.random() * (this.canvas.width - 16) + 16;
+      var newCloud = new Clouds(this.canvas, randomX);
+      this.clouds.push(newCloud);
+    }
+    this.update();
     this.update();
     this.clear(this.canvas);
     this.draw();
@@ -34,6 +42,9 @@ Game.prototype.startGame = function () {
 };
 
 Game.prototype.update = function () {
+  this.clouds.forEach(function (enemy) {
+    enemy.move();
+  });
   this.player.move();
   this.enemies.forEach(function (enemy) {
     enemy.move();
@@ -55,10 +66,13 @@ Game.prototype.clear = function () {
 
 Game.prototype.draw = function () {
   this.ctx.font = "12px Arial";
-  this.ctx.fillStyle = 'white';
+  this.ctx.fillStyle = 'black';
   this.ctx.fillText(`level: ${this.level}`, this.canvas.width - 50, 30);
   this.ctx.fillText(`kills: ${this.kills}`,  this.canvas.width - 100, 30);
   this.ctx.fillText(`lives: ${this.player.lives}`,  this.canvas.width - 150, 30);
+  this.clouds.forEach(function (enemy) {
+    enemy.draw();
+  });
   this.player.draw();
   this.enemies.forEach(function (enemy) {
     enemy.draw();
